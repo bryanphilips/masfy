@@ -1,0 +1,14 @@
+{
+  "name": "masfy",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "start": "bun run src/index.ts"
+  },
+  "dependencies": {
+    "airtable": "^0.12.2",
+    "hono": "^4.9.8"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
