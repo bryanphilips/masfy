@@ -30,15 +30,16 @@ export const Home = async () => {
             </div>
 
 
-            // <!-- Slide 4 - Replace with your own image URL -->
-            // <div class="carousel-slide" style="background-image: url('${process.env.NEXT_PUBLIC_APP_URL}/images/slide-4.jpeg');">
-            //     <div class="carousel-overlay"></div>
-            // </div>
+            <!-- Slide 4 - Replace with your own image URL -->
+            <div class="carousel-slide" style="background-image: url('${process.env.NEXT_PUBLIC_APP_URL}/images/slide-4.jpeg');">
+                <div class="carousel-overlay"></div>
+            </div>
 
-            <!-- Slide 5 - Replace with your own image URL -->
+            <!-- Slide 5 - Replace with your own image URL 
             <div class="carousel-slide" style="background-image: url('${process.env.NEXT_PUBLIC_APP_URL}/images/slide-6.jpeg');">
                 <div class="carousel-overlay"></div>
             </div>
+            -->
 
             <!-- Slide 6 - Replace with your own image URL -->
             <div class="carousel-slide" style="background-image: url('${process.env.NEXT_PUBLIC_APP_URL}/images/slide-7.jpeg');">
@@ -78,8 +79,8 @@ export const Home = async () => {
                 <div class="indicator active" data-slide="0"></div>
                 <div class="indicator" data-slide="1"></div>
                 <div class="indicator" data-slide="2"></div>
-                // <div class="indicator" data-slide="3"></div>
-                <div class="indicator" data-slide="4"></div>
+                <div class="indicator" data-slide="3"></div>
+                <!--<div class="indicator" data-slide="4"></div> -->
                 <div class="indicator" data-slide="5"></div>
                 <div class="indicator" data-slide="6"></div>
                 <div class="indicator" data-slide="7"></div>
