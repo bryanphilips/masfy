@@ -9,7 +9,7 @@ export const BaseLayout = ({ children }: { children: any }) => {
     <html data-wf-domain="www.masfy.com" data-wf-page="63e9323160afc2a669adcb95" data-wf-site="61ae6ef245cc43db8557b45c">
         <head>
             <meta charset="utf-8"/>
-            <title>Masfy Consultants | Your Gateway to Engineering Excellence</title>
+            <title>Masfy Consultants - Engineering Consultants</title>
             <meta content="From skyscrapers to smart infrastructure, Masfy Consultants helps developers, contractors, and homeowners turn vision into reality." name="description"/>
             <meta content="Masfy Consultants | Your Gateway to Engineering Excellence" property="og:title"/>
             <meta content="From skyscrapers to smart infrastructure, Masfy Consultants helps developers, contractors, and homeowners turn vision into reality." property="og:description"/>
