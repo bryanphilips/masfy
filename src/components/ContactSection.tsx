@@ -44,7 +44,7 @@ export const ContactSection = () => html`
             </a>
             <div class="label">Socials</div>
             <div style="display: flex; gap: 1rem;" id="w-node-_4b0a8e23-e757-e4ac-a9be-4f524797ea72-9d545434">
-                <a id="w-node-_7ec8d98e-db76-aa4d-1719-834a09d63fe1-9d545434" href="https://web.facebook.com/photo?fbid=1353909253409033&set=pcb.1353916130075012" target="_blank" class="contact-links social w-inline-block">
+                <a id="w-node-_7ec8d98e-db76-aa4d-1719-834a09d63fe1-9d545434" href="https://www.facebook.com/masfy.consultants/" target="_blank" class="contact-links social w-inline-block">
                     <img src="/images/facebook.png" loading="lazy" alt="" class="image-4"/>
                 </a>
                 <a id="w-node-_7ec8d98e-db76-aa4d-1719-834a09d63fe1-9d545434" href="https://www.instagram.com/masfy_consultants/" target="_blank" class="contact-links social w-inline-block">
