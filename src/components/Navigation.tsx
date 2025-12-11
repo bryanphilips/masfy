@@ -6,7 +6,7 @@ export const Navigation = () => {
         <div class="container nav-container">
             <div class="menu-left">
                 <a href="/" aria-current="page" class="brand w-nav-brand w--current">
-                    <img style="width: 250px; height: auto;" src="${process.env.NEXT_PUBLIC_APP_URL}/images/masfy-new-logo.svg" alt="" class="brand-image"/>
+                    <img style="width: 250px; margin-top: -45px; height: auto;" src="${process.env.NEXT_PUBLIC_APP_URL}/images/masfy-new-logo.svg" alt="" class="brand-image"/>
                 </a>
                 <div class="featured-links">
                     <a href="/about" class="nav-link w-inline-block">
