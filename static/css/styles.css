@@ -3008,6 +3008,7 @@ figcaption {
     object-fit: contain;
     display: block;
     margin-bottom: 70px;
+     margin-top: -45px;
 }
 
 .ninja-image-wrap {
