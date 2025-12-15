@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { serveStatic } from 'hono/bun'
+import { serve,serveStatic } from 'hono/bun'
 import { Home } from './views/Home'
 import { About } from './views/About'
 import { Services } from './views/Services'
