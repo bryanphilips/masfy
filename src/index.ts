@@ -25,7 +25,7 @@ app.use('/*', async (c, next) => {
     c.req.method === 'HEAD'
 
   if (c.req.path === '/' && isProbe) {
-    return c.text('ok')
+    return c.html('ok')
   }
 
   return next()
@@ -41,8 +41,21 @@ app.use('/images/*', serveStatic({ root: './static' }))
 app.use('/fonts/*', serveStatic({ root: './static' })) // keep if you have fonts
 app.use('/favicon.ico', serveStatic({ root: './static' })) // optional
 
+//Cache
+let homeCache: { html: string; ts: number } | null = null
+const HOME_TTL_MS = 60_000
 // Routes
-app.get('/', async (c) => { return c.html(BaseLayout({ children: await Home() }))})
+app.get('/', async (c) => {
+  const now = Date.now()
+
+  if (homeCache && now - homeCache.ts < HOME_TTL_MS) {
+    return c.html(homeCache.html)
+  }
+
+  const rendered = BaseLayout({ children: await Home() })
+  homeCache = { html: rendered, ts: now }
+  return c.html(rendered)
+})
 app.get('/about', (c) => c.html(SliderLayout({ children: About() })))
 app.get('/services', (c) => c.html(BaseLayout({ children: Services() })))
 app.get('/projects', (c) => c.html(BaseLayout({ children: Projects() })))
