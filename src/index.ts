@@ -45,8 +45,9 @@ app.get('/contact', (c) => {
   return c.html(ContactLayout({ children: ContactSection() }))
 })
 
-export default {
-  port: Number(process.env.PORT) || 3000,
-  hostname: '0.0.0.0',
+
+serve({
   fetch: app.fetch,
-}
+  port,
+  hostname: '0.0.0.0',
+})
