@@ -14,6 +14,23 @@ import { ContactLayout } from './views/layouts/ContactLayout'
 
 const app = new Hono()
 
+app.use('/*', async (c, next) => {
+  const ua = (c.req.header('user-agent') || '').toLowerCase()
+
+  // Render / platform probes (covers most cases)
+  const isProbe =
+    ua.includes('render') ||
+    ua.includes('health') ||
+    ua.includes('kube-probe') ||
+    c.req.method === 'HEAD'
+
+  if (c.req.path === '/' && isProbe) {
+    return c.text('ok')
+  }
+
+  return next()
+})
+
 // ✅ Health check (fast, no Airtable)
 app.get('/healthz', (c) => c.text('ok'))
 
@@ -25,7 +42,7 @@ app.use('/fonts/*', serveStatic({ root: './static' })) // keep if you have fonts
 app.use('/favicon.ico', serveStatic({ root: './static' })) // optional
 
 // Routes
-app.get('/', (c) => c.html(BaseLayout({ children: Home() })))
+app.get('/', async (c) => { return c.html(BaseLayout({ children: await Home() }))})
 app.get('/about', (c) => c.html(SliderLayout({ children: About() })))
 app.get('/services', (c) => c.html(BaseLayout({ children: Services() })))
 app.get('/projects', (c) => c.html(BaseLayout({ children: Projects() })))
