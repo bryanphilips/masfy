@@ -46,6 +46,7 @@ app.get('/contact', (c) => {
 })
 
 export default {
-  port,        // 👈 Bun will bind to Render's PORT
+  port: Number(process.env.PORT) || 3000,
+  hostname: '0.0.0.0',
   fetch: app.fetch,
 }
