@@ -14,28 +14,32 @@ import { ContactLayout } from './views/layouts/ContactLayout'
 
 const app = new Hono()
 
-app.use('/*', serveStatic({ root: './static' }))
+// ✅ Health check (fast, no Airtable)
+app.get('/healthz', (c) => c.text('ok'))
 
+// ✅ Serve only static folders (prevents hijacking "/")
+app.use('/css/*', serveStatic({ root: './static' }))
+app.use('/js/*', serveStatic({ root: './static' }))
+app.use('/images/*', serveStatic({ root: './static' }))
+app.use('/fonts/*', serveStatic({ root: './static' })) // keep if you have fonts
+app.use('/favicon.ico', serveStatic({ root: './static' })) // optional
+
+// Routes
 app.get('/', (c) => c.html(BaseLayout({ children: Home() })))
 app.get('/about', (c) => c.html(SliderLayout({ children: About() })))
 app.get('/services', (c) => c.html(BaseLayout({ children: Services() })))
 app.get('/projects', (c) => c.html(BaseLayout({ children: Projects() })))
-app.get('/projects/:slug', (c) =>
-  c.html(BaseLayout({ children: Project(c.req.param('slug')) }))
-)
-app.get('/category/:slug', (c) =>
-  c.html(BaseLayout({ children: Category(c.req.param('slug')) }))
-)
-app.get('/contact', (c) =>
-  c.html(ContactLayout({ children: ContactSection() }))
-)
+app.get('/projects/:slug', (c) => c.html(BaseLayout({ children: Project(c.req.param('slug')) })))
+app.get('/category/:slug', (c) => c.html(BaseLayout({ children: Category(c.req.param('slug')) })))
+app.get('/contact', (c) => c.html(ContactLayout({ children: ContactSection() })))
 
 const port = Number(process.env.PORT) || 3000
-
 console.log(`Listening on http://0.0.0.0:${port}`)
 
-Bun.serve({
+const server = Bun.serve({
   port,
   hostname: '0.0.0.0',
   fetch: app.fetch,
 })
+
+console.log('Server bound on port:', server.port)
