@@ -1,5 +1,6 @@
 import { Hono } from 'hono'
-import { serve, serveStatic } from 'hono/bun'
+import { serveStatic } from 'hono/bun'
+
 import { Home } from './views/Home'
 import { About } from './views/About'
 import { Services } from './views/Services'
@@ -11,7 +12,6 @@ import { Project } from './views/Project'
 import { ContactSection } from './components/ContactSection'
 import { ContactLayout } from './views/layouts/ContactLayout'
 
-const port = Number(process.env.PORT) || 3000
 const app = new Hono()
 
 app.use('/*', serveStatic({ root: './static' }))
@@ -26,12 +26,16 @@ app.get('/projects/:slug', (c) =>
 app.get('/category/:slug', (c) =>
   c.html(BaseLayout({ children: Category(c.req.param('slug')) }))
 )
-app.get('/contact', (c) => c.html(ContactLayout({ children: ContactSection() })))
+app.get('/contact', (c) =>
+  c.html(ContactLayout({ children: ContactSection() }))
+)
 
-//console.log(`Listening on http://0.0.0.0:${port}`)
+const port = Number(process.env.PORT) || 3000
 
-serve({
-  fetch: app.fetch,
+console.log(`Listening on http://0.0.0.0:${port}`)
+
+Bun.serve({
   port,
   hostname: '0.0.0.0',
+  fetch: app.fetch,
 })
